@@ -1,0 +1,38 @@
+[07-Sep-2025 11:46:55 UTC] PHP Warning:  openssl_encrypt(): IV passed is 29 bytes long which is longer than the 16 expected by selected cipher, truncating in /home/snackrea/kasir.webpulsa.shop/license/generate-license.php on line 27
+[07-Sep-2025 16:38:38 UTC] PHP Notice:  Undefined variable: plugin_name in /home/snackrea/kasir.webpulsa.shop/license/purchase.php on line 20
+[07-Sep-2025 16:43:00 UTC] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 4
+[07-Sep-2025 16:43:00 UTC] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 4
+[07-Sep-2025 17:01:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'snackrea_license.plugins' doesn't exist in /home/snackrea/kasir.webpulsa.shop/license/purchase.php:13
+Stack trace:
+#0 /home/snackrea/kasir.webpulsa.shop/license/purchase.php(13): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/snackrea/kasir.webpulsa.shop/license/purchase.php on line 13
+[07-Sep-2025 17:01:52 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'snackrea_license.plugins' doesn't exist in /home/snackrea/kasir.webpulsa.shop/license/purchase.php:13
+Stack trace:
+#0 /home/snackrea/kasir.webpulsa.shop/license/purchase.php(13): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/snackrea/kasir.webpulsa.shop/license/purchase.php on line 13
+[07-Sep-2025 17:51:22 UTC] PHP Notice:  Undefined index: is_live in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 49
+[07-Sep-2025 17:51:22 UTC] PHP Notice:  Undefined index: secret_key_sandbox in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 49
+[07-Sep-2025 17:51:22 UTC] PHP Notice:  Undefined index: is_live in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 50
+[08-Sep-2025 06:48:06 UTC] PHP Notice:  Undefined variable: plugin_id in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 06:48:06 UTC] PHP Notice:  Undefined variable: domain in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 06:48:06 UTC] PHP Notice:  Undefined variable: email in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 06:48:06 UTC] PHP Notice:  Undefined variable: phone in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 06:48:06 UTC] PHP Notice:  Undefined variable: expiry_date in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 06:48:06 UTC] PHP Notice:  Undefined variable: final_amount in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 06:48:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'plugin_id' cannot be null in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php:16
+Stack trace:
+#0 /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php(16): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 16
+[08-Sep-2025 07:35:49 UTC] PHP Warning:  Undefined variable $duration_unit in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 44
+[08-Sep-2025 07:35:49 UTC] PHP Warning:  Undefined variable $duration_unit in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 47
+[08-Sep-2025 07:35:49 UTC] PHP Warning:  Undefined variable $duration_value in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 51
+[08-Sep-2025 07:35:49 UTC] PHP Warning:  Undefined variable $duration_value in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 58
+[08-Sep-2025 07:35:49 UTC] PHP Warning:  Undefined variable $duration_unit in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 58
+[08-Sep-2025 07:35:49 UTC] PHP Fatal error:  Uncaught DateMalformedStringException: DateTime::modify(): Failed to parse time string (+ ) at position 0 (+): Unexpected character in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php:58
+Stack trace:
+#0 /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php(58): DateTime->modify('+ ')
+#1 {main}
+  thrown in /home/snackrea/kasir.webpulsa.shop/license/process-purchase.php on line 58

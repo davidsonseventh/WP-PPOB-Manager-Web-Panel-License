@@ -1,0 +1,7 @@
+{
+    "require": {
+        "midtrans/midtrans-php": "^2.6",
+        "xendit/xendit-php": "^7.0",
+        "paypal/paypal-checkout-sdk": "^1.0"
+    }
+}

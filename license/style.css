@@ -1,0 +1,456 @@
+/* --- Global Styling --- */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Header Styling --- */
+.fb-header {
+    background-color: #1877F2;
+    color: white;
+    padding: 15px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+}
+
+/* --- Container Styling --- */
+.homepage-container, .container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 40px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #1d2129;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #606770;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Plugin Grid Styling --- */
+.plugin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom di desktop */
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.plugin-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.plugin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.plugin-card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #1d2129;
+}
+
+.plugin-card .price {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #1877F2;
+    margin: 15px 0;
+}
+
+.plugin-card .price span {
+    font-size: 0.5em;
+    font-weight: 400;
+    color: #606770;
+}
+
+.plugin-actions {
+    margin-top: auto; /* Mendorong tombol ke bagian bawah kartu */
+    padding-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.plugin-actions .button {
+    display: inline-block;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 1em;
+    border: 1px solid transparent;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.plugin-actions .button.primary {
+    background-color: #1877F2;
+    color: white;
+}
+.plugin-actions .button.primary:hover {
+    background-color: #166fe5;
+}
+
+.plugin-actions .button.secondary {
+    background-color: #e4e6eb;
+    color: #1d2129;
+    border-color: #ced0d4;
+}
+.plugin-actions .button.secondary:hover {
+    background-color: #d8dade;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .plugin-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom di tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .plugin-grid {
+        grid-template-columns: 1fr; /* 1 kolom di mobile */
+    }
+    .homepage-container, .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+}
+
+/* (Tambahkan juga CSS untuk halaman admin di sini jika belum ada) */
+
+
+
+/* General Styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    color: #333;
+}
+
+/* Admin Wrapper */
+.admin-wrapper {
+    display: flex;
+}
+
+.admin-nav {
+    width: 220px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.admin-nav h3 {
+    margin-top: 0;
+    color: #fff;
+    border-bottom: 1px solid #495057;
+    padding-bottom: 10px;
+}
+
+.admin-nav a {
+    display: block;
+    color: #adb5bd;
+    text-decoration: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-nav a:hover, .admin-nav a.active {
+    background-color: #495057;
+    color: white;
+}
+
+.admin-content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.admin-header h2 {
+    margin: 0;
+}
+
+/* Forms */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #0073aa;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #005a87;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+/* Messages */
+.success {
+    border: 1px solid #28a745;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.error {
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+
+
+/* Lokasi: style.css (tambahkan di paling bawah) */
+
+/* Styling untuk Halaman Pengaturan Gateway */
+.gateway-settings-box {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.gateway-settings-box h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0 10px 0 0;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-weight: normal;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom */
+    gap: 20px 30px; /* Jarak vertikal dan horizontal */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.paypal-rate {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Penyesuaian untuk layar kecil */
+@media (max-width: 900px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Menjadi 1 kolom di layar kecil */
+    }
+}
+
+
+/* Lokasi: style.css (tambahkan di paling bawah) */
+
+.gateway-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.gateway-header h3 {
+    margin: 0;
+}
+
+
+
+/* Lokasi: style.css (tambahkan di paling bawah) */
+
+/* Homepage Styling */
+.homepage-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.plugin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 30px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.plugin-card {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.plugin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.plugin-card h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+.plugin-card .price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #0073aa;
+    margin: 15px 0;
+}
+
+.plugin-card .price span {
+    font-size: 0.5em;
+    font-weight: normal;
+    color: #666;
+}
+
+.plugin-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.plugin-actions .button {
+    display: inline-block;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.plugin-actions .button.primary {
+    background-color: #0073aa;
+    color: white;
+}
+.plugin-actions .button.primary:hover {
+    background-color: #005a87;
+}
+
+.plugin-actions .button.secondary {
+    background-color: #e9ecef;
+    color: #343a40;
+}
+.plugin-actions .button.secondary:hover {
+    background-color: #ced4da;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 992px) {
+    .plugin-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    }
+}
+
+@media (max-width: 768px) {
+    .plugin-grid {
+        grid-template-columns: 1fr; /* 1 kolom */
+    }
+}
