@@ -188,3 +188,37 @@
     color: #a7aaad !important;
     cursor: not-allowed !important;
 }
+
+
+/* Styling untuk Drag & Drop Produk */
+#wppob-sortable-products {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#wppob-sortable-products li {
+    margin: 5px;
+    padding: 8px 12px;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    cursor: move;
+    display: flex;
+    align-items: center;
+}
+
+#wppob-sortable-products .dashicons-move {
+    margin-right: 8px;
+    color: #555;
+}
+
+.wppob-sortable-placeholder {
+    height: 38px;
+    border: 1px dashed #ccc;
+    background: #f0f0f0;
+    margin: 5px;
+}
