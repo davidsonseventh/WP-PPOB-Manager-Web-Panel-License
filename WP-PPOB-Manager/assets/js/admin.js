@@ -91,41 +91,37 @@
             });
         }
         
-        // --- DRAG & DROP PRODUK DALAM KATEGORI (KODE DIPERBAIKI) ---
-        const sortableProducts = $('#wppob-sortable-products');
-        if (sortableProducts.length) {
-            const spinner = sortableProducts.closest('.col-wrap').find('h3 .spinner');
-            sortableProducts.sortable({
-                placeholder: 'wppob-sortable-placeholder',
-                handle: '.dashicons-move',
-                update: function(event, ui) {
-                    spinner.addClass('is-active');
-                    
-                    // Cara baru yang lebih aman untuk mengambil ID produk
-                    const product_ids = [];
-                    $(this).find('li').each(function() {
-                        product_ids.push($(this).data('id'));
-                    });
-                    
-                    const category_id = $('input[name="category_id"]').val();
+       // --- DRAG & DROP PRODUK DALAM KATEGORI (KODE DIPERBAIKI) ---
+const sortableProducts = $('#wppob-sortable-products');
+if (sortableProducts.length) {
+    const spinner = sortableProducts.closest('.col-wrap').find('h3 .spinner');
+    sortableProducts.sortable({
+        placeholder: 'wppob-sortable-placeholder',
+        handle: '.dashicons-move',
+        update: function(event, ui) {
+            spinner.addClass('is-active');
+            
+            // Mengambil ID produk dari atribut data-id
+            const product_ids = $(this).sortable('toArray', { attribute: 'data-id' });
+            const category_id = $('input[name="category_id"]').val();
 
-                    $.post(wppob_admin_params.ajax_url, {
-                        action: 'wppob_update_product_order_in_category',
-                        nonce: wppob_admin_params.nonce,
-                        category_id: category_id,
-                        product_ids: product_ids
-                    }).done(function(response) {
-                        if (!response.success) {
-                            alert('Gagal menyimpan urutan produk: ' + response.data.message);
-                        }
-                    }).fail(function() {
-                        alert('Terjadi kesalahan koneksi saat menyimpan urutan produk.');
-                    }).always(function() {
-                        spinner.removeClass('is-active');
-                    });
+            $.post(wppob_admin_params.ajax_url, {
+                action: 'wppob_update_product_order_in_category',
+                nonce: wppob_admin_params.nonce,
+                category_id: category_id,
+                product_ids: product_ids
+            }).done(function(response) {
+                if (!response.success) {
+                    alert('Gagal menyimpan urutan produk: ' + (response.data.message || 'Error tidak diketahui.'));
                 }
-            }).disableSelection();
+            }).fail(function() {
+                alert('Terjadi kesalahan koneksi saat menyimpan urutan produk.');
+            }).always(function() {
+                spinner.removeClass('is-active');
+            });
         }
+    }).disableSelection();
+}
 
         // --- FUNGSI EDIT GAMBAR MASSAL ---
         const bulkEditor = $('#wppob-bulk-image-editor');
