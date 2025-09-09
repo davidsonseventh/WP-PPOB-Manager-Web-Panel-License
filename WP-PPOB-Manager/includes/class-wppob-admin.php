@@ -191,49 +191,39 @@ class WPPPOB_Admin {
     
     public function render_display_categories_page() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_wpnonce'])) {
-    if (wp_verify_nonce($_POST['_wpnonce'], 'wppob_save_category_nonce')) {
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'wppob_display_categories';
-        $id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
-        $is_new = ($id === 0);
+            if (wp_verify_nonce($_POST['_wpnonce'], 'wppob_save_category_nonce')) {
+                global $wpdb;
+                $table_name = $wpdb->prefix . 'wppob_display_categories';
+                $id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
 
-        // 1. Siapkan data dasar yang selalu ada
-        $data = [
-            'name'                  => sanitize_text_field($_POST['cat_name']),
-            'image_id'              => intval($_POST['cat_image_id']),
-            'display_style'         => sanitize_key($_POST['display_style']),
-            'product_display_style' => sanitize_key($_POST['product_display_style']),
-            'product_display_mode'  => sanitize_key($_POST['product_display_mode']),
-        ];
-
-        // 2. Cek apakah kategori yang sedang diedit ini memiliki sub-kategori (anak)
-        $has_children = false;
-        if (!$is_new) {
-            $child_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(id) FROM {$table_name} WHERE parent_id = %d", $id));
-            $has_children = ($child_count > 0);
+                // Ambil produk yang dipilih dari form
+                $products = isset($_POST['assigned_products']) ? array_map('intval', $_POST['assigned_products']) : [];
+                
+                $data = [
+                    'name' => sanitize_text_field($_POST['cat_name']),
+                    'image_id' => intval($_POST['cat_image_id']),
+                    'display_style' => sanitize_key($_POST['display_style']),
+                    'assigned_products' => json_encode($products), // Langsung masukkan produk yang dipilih
+                    'product_display_style' => sanitize_key($_POST['product_display_style']),
+                    'product_display_mode' => sanitize_key($_POST['product_display_mode']),
+                ];
+                
+                if ($id > 0) {
+                    // Cek apakah kategori ini memiliki anak/sub-kategori
+                    $child_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(id) FROM {$table_name} WHERE parent_id = %d", $id));
+                    if ($child_count > 0) {
+                        // Jika punya anak, jangan simpan produk di kategori ini.
+                        // Kosongkan kembali data produknya.
+                        $data['assigned_products'] = '[]'; 
+                    }
+                    $wpdb->update($table_name, $data, ['id' => $id]);
+                } else {
+                    // Kategori baru selalu bisa diisi produk
+                    $wpdb->insert($table_name, $data);
+                }
+                echo '<div class="notice notice-success is-dismissible"><p>Kategori berhasil disimpan.</p></div>';
+            }
         }
-
-        // 3. Tentukan isi dari 'assigned_products' berdasarkan kondisi
-        if ($has_children) {
-            // JIKA punya anak, KATEGORI INDUK TIDAK BOLEH punya produk. Paksa kosong.
-            $data['assigned_products'] = '[]';
-        } else {
-            // JIKA TIDAK punya anak (baik itu sub-kategori atau kategori baru),
-            // ambil data produk dari form.
-            $products = isset($_POST['assigned_products']) ? array_map('intval', $_POST['assigned_products']) : [];
-            $data['assigned_products'] = json_encode($products);
-        }
-
-        // 4. Simpan ke database
-        if ($is_new) {
-            $wpdb->insert($table_name, $data);
-        } else {
-            $wpdb->update($table_name, $data, ['id' => $id]);
-        }
-        
-        echo '<div class="notice notice-success is-dismissible"><p>Kategori berhasil disimpan.</p></div>';
-    }
-}
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_grid_nonce'])) {
             if (wp_verify_nonce($_POST['_grid_nonce'], 'wppob_save_grid_nonce')) {
                 update_option('wppob_grid_columns', intval($_POST['wppob_grid_columns']));
