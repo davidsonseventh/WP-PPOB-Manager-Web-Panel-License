@@ -1,0 +1,116 @@
+/* Lokasi: assets/css/frontend.css */
+
+.wppob-custom-view-container {
+    max-width: 960px; /* Lebar maksimal kontainer */
+    margin: 30px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.wppob-app-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+#wppob-app-back-btn {
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 15px;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+#wppob-app-title {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* === BAGIAN PENTING UNTUK GRID === */
+#wppob-app-content {
+    /* Atur jumlah kolom di sini. Contoh: 4 kolom */
+    --wppob-grid-columns: 4; 
+    
+    display: grid;
+    grid-template-columns: repeat(var(--wppob-grid-columns), 1fr);
+    gap: 20px; /* Jarak antar item */
+}
+
+/* Penyesuaian untuk layar kecil (Mobile) */
+@media (max-width: 768px) {
+    #wppob-app-content {
+        --wppob-grid-columns: 3; /* Menjadi 3 kolom di tablet */
+    }
+}
+@media (max-width: 480px) {
+    #wppob-app-content {
+        --wppob-grid-columns: 2; /* Menjadi 2 kolom di HP */
+    }
+}
+/* === AKHIR BAGIAN PENTING === */
+
+
+/* Styling untuk setiap item kategori */
+.wppob-category-item, a.wppob-category-item {
+    display: flex;
+    flex-direction: column; /* Memastikan gambar dan teks tersusun ke bawah */
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.wppob-category-item:hover {
+    transform: translateY(-4px);
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.wppob-category-image-wrapper {
+    margin-bottom: 10px; /* Memberi jarak antara gambar dan teks */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.wppob-category-image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.wppob-category-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.wppob-product-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0073aa;
+    margin-top: 4px;
+}
+
+/* Styling untuk loader/pemuatan */
+#wppob-app-loader { text-align: center; padding: 40px 0; }
+.wppob-loader-inline {
+    display: inline-block; width: 30px; height: 30px;
+    border: 3px solid #f3f3f3; border-top: 3px solid #3498db;
+    border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+
