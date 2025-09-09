@@ -101,17 +101,30 @@ $assigned_product_ids_for_checkbox = !empty($item_to_edit->assigned_products) ? 
                         </select>
                     </div>
 
-                    <h4>Konten Kategori</h4>
-                    <div class="form-field">
-                        <label>Pilih Produk (Centang untuk menambahkan ke kategori)</label>
-                        <div class="wppob-product-checkbox-container">
-                            <?php if (!empty($ppob_products)): foreach($ppob_products as $product): $product_id = $product->get_id(); $is_checked = in_array($product_id, $assigned_product_ids_for_checkbox); ?>
-                                <div><label><input type="checkbox" name="assigned_products[]" value="<?php echo esc_attr($product_id); ?>" <?php checked($is_checked, true); ?>> <?php echo esc_html($product->get_name()); ?></label></div>
-                            <?php endforeach; else: ?>
-                                <p>Tidak ada produk PPOB. Silakan sinkronisasi.</p>
-                            <?php endif; ?>
-                        </div>
-                    </div>
+                   <h4>Konten Kategori</h4>
+<?php 
+$has_children_check = false;
+if ($edit_mode) {
+    $child_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(id) FROM {$table_name} WHERE parent_id = %d", intval($_GET['id'])));
+    $has_children_check = $child_count > 0;
+}
+if ($edit_mode && $has_children_check): 
+?>
+    <div class="form-field">
+        <p class="description">Kategori ini memiliki sub-kategori, sehingga tidak bisa diisi produk secara langsung. Silakan atur produk di dalam masing-masing sub-kategorinya.</p>
+    </div>
+<?php else: ?>
+    <div class="form-field">
+        <label>Pilih Produk (Centang untuk menambahkan ke kategori)</label>
+        <div class="wppob-product-checkbox-container">
+            <?php if (!empty($ppob_products)): foreach($ppob_products as $product): $product_id = $product->get_id(); $is_checked = in_array($product_id, $assigned_product_ids_for_checkbox); ?>
+                <div><label><input type="checkbox" name="assigned_products[]" value="<?php echo esc_attr($product_id); ?>" <?php checked($is_checked, true); ?>> <?php echo esc_html($product->get_name()); ?></label></div>
+            <?php endforeach; else: ?>
+                <p>Tidak ada produk PPOB. Silakan sinkronisasi.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
                     
                     <h4>Pengaturan Tampilan Produk</h4>
                     <p class="description">Atur bagaimana produk di dalam kategori ini akan ditampilkan di halaman depan.</p>
